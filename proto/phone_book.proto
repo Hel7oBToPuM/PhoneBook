@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+service PhoneBookService {
+  rpc addContact(Contact) returns (google.protobuf.Empty);
+  rpc searchContact (SearchRequest) returns (stream Contact);
+  rpc deleteContact (DeleteRequest) returns (google.protobuf.Empty);
+}
+
+message DeleteRequest {
+  Contact contact = 1;
+}
+
+message SearchRequest {
+  Contact contact = 1;
+}
+
+message Contact {
+  string phone = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string patronymic = 4;
+  string note = 5;
+}
+
+message PhoneBook {
+  repeated Contact contacts = 1;
+}
