@@ -170,7 +170,7 @@ class PhoneBookApp(tk.Tk):
     def add_handler(self):
         try:
             # Попытка добавить контакт
-            self.grpc_client.addContact({self.params[name]: entry.get().rstrip() for name, entry in self.entrys["add"].items()})
+            self.grpc_client.addContact({self.params[name]: entry.get().strip() for name, entry in self.entrys["add"].items()})
             self.error_labels["add"].configure(text="Контакт успешно добавлен", foreground="green")
 
             # Очистка полей
